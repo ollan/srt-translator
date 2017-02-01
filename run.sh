@@ -7,8 +7,9 @@ cd /app
 git pull /app
 
 pip install goslate 
-pip install time 
+#pip install time 
 pip install requests 
-pip install codecs
+#pip install codecs
+pip install sys
 
 python /app/run.py 
