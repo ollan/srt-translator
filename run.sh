@@ -7,5 +7,3 @@ mkdir -p /usr/src/myapp
    
 cd /app
 git pull /app
-
-python --version
