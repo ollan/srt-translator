@@ -2,9 +2,9 @@
 
 mkdir -p /usr/src/myapp
 
-[[ ! -d "/usr/src/myapp/.git" ]] && \
-   git clone https://github.com/gunesmes/subtitle_translator.git /usr/src/myapp
+[[ ! -d "/app/.git" ]] && \
+   git clone https://github.com/gunesmes/subtitle_translator.git /app
    
-git pull /usr/src/myapp
+git pull /app
 
 python --version
