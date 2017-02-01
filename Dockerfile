@@ -1,4 +1,4 @@
-FROM python:2-onbuild
+FROM python:2-slim
 MAINTAINER Johan Axfors <johan@axfors.se>
 
 RUN mkdir -p /usr/src/app /srt
