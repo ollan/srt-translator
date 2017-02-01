@@ -29,4 +29,4 @@ fi
 
 #sed -i '10s/.*/ YANDEX_API_KEY = "$(< /app/yandex.key)" /' app/src/subTranslater.py
 
-python /app/run.py "/srt/Suits.S06E11.720p.HDTV.x264-AVS[rarbg]" $(< /app/st.cfg)
+python /app/run.py "/srt/TEST" $(< /app/st.cfg)
