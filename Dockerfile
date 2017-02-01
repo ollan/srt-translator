@@ -1,4 +1,4 @@
-FROM python:2-slim
+FROM python:2-wheezy
 MAINTAINER Johan Axfors <johan@axfors.se>
 
 ENV DEBIAN_FRONTEND noninteractive
