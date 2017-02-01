@@ -6,6 +6,10 @@
 cd /app
 git pull /app
 
-pip install pip goslate time requests codecs sys
+pip install goslate 
+pip install time 
+pip install requests 
+pip install codecs
+pip install sys
 
 python /app/run.py 
