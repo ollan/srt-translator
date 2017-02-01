@@ -20,7 +20,13 @@ if [ ! -f /app/yandex.key ]; then
     echo "4trnsl.X.X.20170201T090054Z.XXXXXXXXXXXXX.XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" > /app/yandex.key
 fi
 
-sed -e "s/YANDEX_API_KEY = ""/YANDEX_API_KEY = ""$(< /app/yandex.key)""/" /app/src/subTranslater.py > /app/src/subTranslater.py.tmp
+if [ ! -f /app/src/subTranslater.py.org ]; then
+   cp /app/src/subTranslater.py /app/src/subTranslater.py.org
+fi
+
+sed -e "s/YANDEX_API_KEY = ""/YANDEX_API_KEY = "$(< /app/yandex.key)"/" /app/src/subTranslater.py > /app/src/subTranslater.py.tmp
 mv /app/src/subTranslater.py.tmp /app/src/subTranslater.py
+
+cat /app/src/subTranslater.py
 
 python /app/run.py "$(< /app/st.cfg)"
