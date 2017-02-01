@@ -11,8 +11,6 @@ RUN apt-get update && \
 	apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /var/cache/apt/archive/*.deb
 
-RUN mkdir -p /usr/src/myapp
-
 ADD ./run.sh /run.sh
 RUN chmod 755 /*.sh
 
