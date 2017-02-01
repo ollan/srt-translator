@@ -30,3 +30,5 @@ fi
 #sed -i '10s/.*/ YANDEX_API_KEY = "$(< /app/yandex.key)" /' app/src/subTranslater.py
 
 python /app/run.py "/srt/TEST" $(< /app/st.cfg)
+
+#file pattern *.en.srt
