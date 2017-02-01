@@ -10,7 +10,7 @@ pip install goslate
 #pip install time 
 pip install requests 
 #pip install codecs
-pip install sys
+#pip install sys
 
 if [ ! -f /app/st.cfg ]; then
     echo "40 yandex en sv" > /app/st.cfg
