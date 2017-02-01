@@ -9,7 +9,7 @@ git pull /app
 pip install goslate 
 #pip install time 
 pip install requests 
-#pip install codecs
+pip install codecs
 #pip install sys
 
 if [ ! -f /app/st.cfg ]; then
