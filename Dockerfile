@@ -14,5 +14,5 @@ RUN apt-get update && \
 ADD ./run.sh /run.sh
 RUN chmod 755 /*.sh
 
-VOLUME /usr/src/myapp /srt
+VOLUME /app /srt
 CMD ["/run.sh"]
