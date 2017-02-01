@@ -6,7 +6,6 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update && \ 
     apt-get -y install \
 		bash && \
-	apt-get upgrade && \
 	apt-get autoremove && \
 	apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /var/cache/apt/archive/*.deb
