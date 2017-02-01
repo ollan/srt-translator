@@ -3,7 +3,7 @@ MAINTAINER Johan Axfors <johan@axfors.se>
 
 
 RUN apt-get update && \ 
-    apt-get -yq install \
+    apt-get -y install \
 		bash && \
 	apt-get upgrade && \
 	apt-get autoremove && \
