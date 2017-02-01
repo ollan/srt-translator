@@ -29,4 +29,5 @@ fi
 
 #sed -i '10s/.*/ YANDEX_API_KEY = "$(< /app/yandex.key)" /' app/src/subTranslater.py
 
-python /app/run.py /srt/The.Hateful.Eight.2015.BDRip.x264-SPARKS/ $(< /app/st.cfg)
+#python /app/run.py /srt/The.Hateful.Eight.2015.BDRip.x264-SPARKS/ $(< /app/st.cfg)
+python /app/run.py /srt/The.Hateful.Eight.2015.BDRip.x264-SPARKS/ 40 yandex en sv
