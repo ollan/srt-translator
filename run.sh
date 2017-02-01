@@ -24,8 +24,10 @@ if [ ! -f /app/src/subTranslater.py.org ]; then
    cp /app/src/subTranslater.py /app/src/subTranslater.py.org
 fi
 
-sed -e "s/YANDEX_API_KEY = ""/YANDEX_API_KEY = "$(< /app/yandex.key)"/" /app/src/subTranslater.py > /app/src/subTranslater.py.tmp
-mv /app/src/subTranslater.py.tmp /app/src/subTranslater.py
+#sed -e "s/YANDEX_API_KEY = ""/YANDEX_API_KEY = "$(< /app/yandex.key)"/" /app/src/subTranslater.py > /app/src/subTranslater.py.tmp
+#mv /app/src/subTranslater.py.tmp /app/src/subTranslater.py
+
+sed -i '10s/.*/ YANDEX_API_KEY = "$(< /app/yandex.key)" /' app/src/subTranslater.py
 
 cat /app/src/subTranslater.py
 
