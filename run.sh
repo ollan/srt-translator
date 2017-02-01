@@ -13,10 +13,13 @@ pip install requests
 pip install sys
 
 if [ ! -f /app/st.cfg ]; then
-    echo "40" >> /app/st.cfg
-    echo "yandex" >> /app/st.cfg
-    echo "en" >> /app/st.cfg
-    echo "sv" >> /app/st.cfg
+    echo "40 yandex en sv" > /app/st.cfg
 fi
 
-python /app/run.py 
+if [ ! -f /app/yandex.key ]; then
+    echo "4trnsl.X.X.20170201T090054Z.XXXXXXXXXXXXX.XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" > /app/yandex.key
+fi
+
+sed -i '10s/.*/YANDEX_API_KEY = "$(< /app/yandex.key)"/' /app/src/subTranslater.py
+
+python /app/run.py "$(< /app/st.cfg)"
