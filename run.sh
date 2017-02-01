@@ -5,3 +5,5 @@
    
 cd /app
 git pull /app
+
+python /app/run.py 
