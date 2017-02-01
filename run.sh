@@ -1,8 +1,8 @@
 #!/bin/bash
 
-[[ ! -d "/usr/scr/myapp/.git" ]] && \
-   git clone https://github.com/gunesmes/subtitle_translator.git /usr/scr/myapp
+[[ ! -d "/usr/src/myapp/.git" ]] && \
+   git clone https://github.com/gunesmes/subtitle_translator.git /usr/src/myapp
    
-git pull /usr/scr/myapp
+git pull /usr/src/myapp
 
 python --version
