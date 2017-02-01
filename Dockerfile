@@ -1,6 +1,8 @@
 FROM python:2-onbuild
+MAINTAINER Johan Axfors <johan@axfors.se>
 
 
 
 
-VOLUMES /usr/src/myapp
+VOLUME /usr/src/myapp
+CMD ["/run"]
