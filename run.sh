@@ -31,7 +31,10 @@ while inotifywait -e modify -e moved_to -e create /srt; do
          echo "Already translated dir $dirpath"
       else
          echo "Translating subtitle file $filepath"
-         python /app/src/run.py "$dirpath" $(< /app/config/st.cfg) > /dev/null
+         encoding=`file -i "$filepath" | cut -f 2 -d";" | cut -f 2 -d=`
+         echo "Encoding: $encoding"
+         iconv -f "$encoding" -t utf-8 $filepath > $filepath.utf8
+         #python /app/src/run.py "$dirpath" $(< /app/config/st.cfg) > /dev/null
          chmod -R 0777 "$dirpath"
       fi
    done
