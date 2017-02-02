@@ -31,7 +31,7 @@ while inotifywait -e modify -e moved_to -e create /srt; do
          echo "Already translated dir $dirpath"
       else
          echo "Translating subtitle file $filepath"
-         #python /app/src/run.py "$dirpath" $(< /app/config/st.cfg) > /dev/null
+         python /app/src/run.py "$dirpath" $(< /app/config/st.cfg) > /dev/null
       fi
    done
    sleep 60
