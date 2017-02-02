@@ -24,14 +24,11 @@ sed -i "13s/.*/YANDEX_API_KEY = \"$YAK\"/" /app/src/subTranslater.py
 
 find /srt -name '*.srt' | while read filepath; do
    dirpath=$(dirname "$filepath")
-   echo "$dirpath/*_to_*.srt"
    
-    files=$(ls "$dirpath/*.srt" 2> /dev/null | wc -l)
-    echo "${files[0]}"
-    if [ -e "${files[0]}" ]; then
-       echo "Already processed directory $dirpath"
+    if [[ "$filepath" == *"_to_"*".srt" ]]; then
+      echo "Already processed directory $dirpath"
     else
       echo "Processing directory $(dirname "$filepath")"
-      python /app/run.py "$dirpath" $(< /app/st.cfg)
+      #python /app/run.py "$dirpath" $(< /app/st.cfg)
     fi
 done
