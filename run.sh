@@ -28,8 +28,9 @@ find /srt -name '*.srt' ! -path '*_to_*.srt' | while read filepath; do
    
    let "translate=0"
    
-   find "$dirpath" -name '*_to_*.srt' | while read filepath2; do
+   find "$dirpath" -path '*_to_*.srt' | while read filepath2; do
       let "translate++"
+      echo "Increase $translate"
       break
    done
    
