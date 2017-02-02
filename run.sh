@@ -23,7 +23,7 @@ YAK=$(cat "/app/config/yandex.key")
 echo "Yandex key: $YAK"
 sed -i "13s/.*/YANDEX_API_KEY = \"$YAK\"/" /app/src/src/subTranslater.py
 
-while inotifywait -e modify -e moved_to /srt; do
+while inotifywait -e modify -e moved_to -e create /srt; do
    find /srt -name '*.srt' | while read filepath; do
       dirpath=$(dirname "$filepath")
 
