@@ -10,6 +10,10 @@ RUN apt-get update && \
 	apt-get autoremove && \
 	apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /var/cache/apt/archive/*.deb
+    
+RUN pip install \ 
+   goslate \
+   requests
 
 ADD ./run.sh /run.sh
 RUN chmod 755 /*.sh
