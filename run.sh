@@ -26,6 +26,10 @@ find /srt -name '*.srt' ! -path '*_to_*.srt' | while read filepath; do
 #find /srt -name '*.srt' | while read filepath; do
    dirpath=$(dirname "$filepath")
    
+   find "$dirpath" -name '*_to_*.srt' | while read filepath2; do
+      echo "Already translated dir $dirpath"
+   done
+   
     #if [[ "$filepath" == *"_to_"*".srt" ]]; then
     #  echo "Already translated subtitle file $filepath"
     #else
