@@ -25,8 +25,11 @@ sed -i "11s/.*/YANDEX_API_KEY = \"$YAK\"/" /app/src/subTranslater.py
 #python /app/run.py "/srt/TEST" $(< /app/st.cfg)
 
 find /srt -name '*.srt' | while read filepath; do
-    echo "Processing file '$filepath'"
-    echo "Processing directory $(dirname "$filepath")"
+    #echo "Processing file '$filepath'"
+    #if [ ! -f $(dirname "$filepath")'*.srt' ]; then
+      echo "Processing directory $(dirname "$filepath")"
+      python /app/run.py "$(dirname "$filepath")" $(< /app/st.cfg)
+    #fi
 done
 
 #file pattern *.en.srt
