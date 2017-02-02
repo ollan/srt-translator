@@ -33,7 +33,7 @@ find /srt -name '*.srt' | while read filepath; do
     #if [ ! -f "$(dirname "$filepath")/*_to_*.srt" ]; then
       echo "Already processed directory $dirpath"
     else
-      #echo "Processing directory $(dirname "$filepath")"
+      echo "Processing directory $(dirname "$filepath")"
       #python /app/run.py "$dirpath" $(< /app/st.cfg)
     fi
 done
