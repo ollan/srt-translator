@@ -22,13 +22,14 @@ YAK=$(cat "/app/yandex.key")
 echo "Yandex key: $YAK"
 sed -i "13s/.*/YANDEX_API_KEY = \"$YAK\"/" /app/src/subTranslater.py
 
-find /srt -name '*.srt' | while read filepath; do
+find /srt -name '*.srt' ! -path '*_to_*.srt'; do
+#find /srt -name '*.srt' | while read filepath; do
    dirpath=$(dirname "$filepath")
    
-    if [[ "$filepath" == *"_to_"*".srt" ]]; then
-      echo "Already translated subtitle file $filepath"
-    else
+    #if [[ "$filepath" == *"_to_"*".srt" ]]; then
+    #  echo "Already translated subtitle file $filepath"
+    #else
       echo "Translating subtitle file $filepath"
       python /app/run.py "$dirpath" $(< /app/st.cfg) > /dev/null
-    fi
+    #fi
 done
