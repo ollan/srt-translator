@@ -28,12 +28,13 @@ find /srt -name '*.srt' ! -path '*_to_*.srt' | while read filepath; do
    
    find "$dirpath" -name '*_to_*.srt' | while read filepath2; do
       echo "Already translated dir $dirpath"
+      break
    done
    
     #if [[ "$filepath" == *"_to_"*".srt" ]]; then
     #  echo "Already translated subtitle file $filepath"
     #else
-      echo "Translating subtitle file $filepath"
-      python /app/run.py "$dirpath" $(< /app/st.cfg) > /dev/null
+   echo "Translating subtitle file $filepath"
+   python /app/run.py "$dirpath" $(< /app/st.cfg) > /dev/null
     #fi
 done
