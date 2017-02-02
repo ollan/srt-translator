@@ -25,7 +25,7 @@ sed -i "13s/.*/YANDEX_API_KEY = \"$YAK\"/" /app/src/subTranslater.py
 find /srt -name '*.srt' | while read filepath; do
    dirpath=$(dirname "$filepath")
    
-   if [ 0 -lt $(ls "$dirpath"/*.srt 2>/dev/null | wc -w) ]; then
+   if [ 0 -lt $(ls "$dirpath"/*_*_to_*.srt 2>/dev/null | wc -w) ]; then
       echo "Already translated dir $dirpath"
    else
       echo "Translating subtitle file $filepath"
