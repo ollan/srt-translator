@@ -22,6 +22,10 @@ YAK=$(cat "/app/yandex.key")
 echo -n "Yandex key: $YAK"
 sed -i "11s/.*/YANDEX_API_KEY = \"$YAK\"/" /app/src/subTranslater.py
 
-python /app/run.py "/srt/TEST" $(< /app/st.cfg)
+#python /app/run.py "/srt/TEST" $(< /app/st.cfg)
+
+find /srt -name '*.srt' | while read line; do
+    echo "Processing file '$line'"
+done
 
 #file pattern *.en.srt
