@@ -29,6 +29,7 @@ fi
 
 #sed -i '10s/.*/ #YAK "$(< /app/yandex.key)" /' app/src/subTranslater.py
 YAK = "$(< /app/yandex.key)"
+echo $YAK
 sed 's/#YAK/YANDEX_API_KEY = $YAK/g' /app/src/subTranslater.py > /app/src/subTranslater.py.new
 
 python /app/run.py "/srt/TEST" $(< /app/st.cfg)
