@@ -1,15 +1,15 @@
 #!/bin/bash
 
 [[ ! -d "/app/.git" ]] && \
-   git clone https://github.com/gunesmes/subtitle_translator.git /app
+   git clone https://github.com/ollan/subtitle_translator.git /app
    
 cd /app
 git pull /app
 
-pip install goslate 
+#pip install goslate 
 #pip install time 
-pip install requests 
-pip install codecs
+#pip install requests 
+#pip install codecs
 #pip install sys
 
 if [ ! -f /app/st.cfg ]; then
