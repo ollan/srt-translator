@@ -1,26 +1,29 @@
 #!/bin/bash
 
+mkdir -p /app/config
+mkdir -p /app/src
+
 [[ ! -d "/app/.git" ]] && \
-   git clone https://github.com/ollan/subtitle_translator.git /app
+   git clone https://github.com/ollan/subtitle_translator.git /app/src
    
-cd /app
-git pull /app
+cd /app/src
+git pull /app/src
 
-if [ ! -f /app/st.cfg ]; then
-    echo "40 yandex en sv" > /app/st.cfg
-    echo "Enter your SubTranslater arguments in /app/st.cfg"
+if [ ! -f /app/config/st.cfg ]; then
+    echo "40 yandex en sv" > /app/config/st.cfg
+    echo "Enter your SubTranslater arguments in /app/config/st.cfg"
     exit
 fi
 
-if [ ! -f /app/yandex.key ]; then
-    echo "4trnsl.X.X.20170201T090054Z.XXXXXXXXXXXXX.XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" > /app/yandex.key
-    echo "Enter your Yandex key in /app/yandex.key"
+if [ ! -f /app/config/yandex.key ]; then
+    echo "4trnsl.X.X.20170201T090054Z.XXXXXXXXXXXXX.XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" > /app/config/yandex.key
+    echo "Enter your Yandex key in /app/config/yandex.key"
     exit
 fi
 
-YAK=$(cat "/app/yandex.key")
+YAK=$(cat "/app/config/yandex.key")
 echo "Yandex key: $YAK"
-sed -i "13s/.*/YANDEX_API_KEY = \"$YAK\"/" /app/src/subTranslater.py
+sed -i "13s/.*/YANDEX_API_KEY = \"$YAK\"/" /app/src/src/subTranslater.py
 
 find /srt -name '*.srt' | while read filepath; do
    dirpath=$(dirname "$filepath")
@@ -29,6 +32,6 @@ find /srt -name '*.srt' | while read filepath; do
       echo "Already translated dir $dirpath"
    else
       echo "Translating subtitle file $filepath"
-      python /app/run.py "$dirpath" $(< /app/st.cfg) > /dev/null
+      python /app/src/run.py "$dirpath" $(< /app/config/st.cfg) > /dev/null
    fi
 done
