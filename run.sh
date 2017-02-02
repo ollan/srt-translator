@@ -33,6 +33,7 @@ find /srt -name '*.srt' ! -path '*_to_*.srt' | while read filepath; do
       break
    done
    
+   echo "$translate"
    if [ "$translate" -gt 0 ]; then
       echo "Already translated dir $dirpath"
    else
