@@ -27,8 +27,7 @@ find /srt -name '*.srt' | while read filepath; do
    echo "$dirpath/*_to_*.srt"
    
     files=$(ls "$dirpath/*_to_*.srt" 2> /dev/null | wc -l)
-    if [ **"$files" != "0"** ]
-    then
+    if [ **"$files" != "0"** ]; then
        echo "Already processed directory $dirpath"
     else
       echo "Processing directory $(dirname "$filepath")"
