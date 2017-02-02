@@ -34,4 +34,5 @@ while inotifywait -e modify -e moved_to -e create /srt; do
          #python /app/src/run.py "$dirpath" $(< /app/config/st.cfg) > /dev/null
       fi
    done
+   sleep 60
 done
