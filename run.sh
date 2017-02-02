@@ -29,7 +29,7 @@ fi
 YAK=$(cat "/app/yandex.key")
 #sed "s/#YAK/YANDEX_API_KEY = $YAK/g" /app/src/subTranslater.py > /app/src/subTranslater.py.new
 #mv /app/src/subTranslater.py.new /app/src/subTranslater.py
-sed -i "11s/.*/YANDEX_API_KEY = $YAK/" /app/src/subTranslater.py
+sed -i "11s/.*/YANDEX_API_KEY = "$YAK"/" /app/src/subTranslater.py
 
 python /app/run.py "/srt/TEST" $(< /app/st.cfg)
 
