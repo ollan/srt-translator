@@ -12,13 +12,11 @@ git pull /app/src
 if [ ! -f /app/config/st.cfg ]; then
     echo "40 yandex en sv" > /app/config/st.cfg
     echo "Enter your SubTranslater arguments in /app/config/st.cfg"
-    exit
 fi
 
 if [ ! -f /app/config/yandex.key ]; then
     echo "4trnsl.X.X.20170201T090054Z.XXXXXXXXXXXXX.XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" > /app/config/yandex.key
     echo "Enter your Yandex key in /app/config/yandex.key"
-    exit
 fi
 
 YAK=$(cat "/app/config/yandex.key")
