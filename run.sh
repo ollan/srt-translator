@@ -8,27 +8,18 @@ git pull /app
 
 if [ ! -f /app/st.cfg ]; then
     echo "40 yandex en sv" > /app/st.cfg
-    echo "Enter your SubTranslater arguments in /app/st.cfg"
+    echo -n "Enter your SubTranslater arguments in /app/st.cfg"
     exit
-    #cp /app/src/subTranslater.py /app/src/subTranslater.py.org
 fi
 
 if [ ! -f /app/yandex.key ]; then
     echo "4trnsl.X.X.20170201T090054Z.XXXXXXXXXXXXX.XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" > /app/yandex.key
-    echo "Enter your Yandex key in /app/yandex.key"
+    echo -n "Enter your Yandex key in /app/yandex.key"
     exit
-    #cp /app/src/subTranslater.py /app/src/subTranslater.py.org
 fi
 
-#if [ ! -f /app/src/subTranslater.py.org ]; then
-   #cp /app/src/subTranslater.py /app/src/subTranslater.py.org
-#fi
-
-#cp /app/src/subTranslater.py.org /app/src/subTranslater.py
-
 YAK=$(cat "/app/yandex.key")
-#sed "s/#YAK/YANDEX_API_KEY = $YAK/g" /app/src/subTranslater.py > /app/src/subTranslater.py.new
-#mv /app/src/subTranslater.py.new /app/src/subTranslater.py
+echo -n "Yandex key: $YAK"
 sed -i "11s/.*/YANDEX_API_KEY = \"$YAK\"/" /app/src/subTranslater.py
 
 python /app/run.py "/srt/TEST" $(< /app/st.cfg)
