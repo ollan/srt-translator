@@ -25,7 +25,7 @@ sed -i "13s/.*/YANDEX_API_KEY = \"$YAK\"/" /app/src/subTranslater.py
 find /srt -name '*.srt' | while read filepath; do
    dirpath=$(dirname "$filepath")
    echo "$dirpath/*_to_*.srt"
-   pattern="$dirpath/*_to_*.srt"
+   pattern="$dirpath/*.srt"
    echo $pattern
    if (( `ls "$pattern" 2> /dev/null|wc -l` ));then
    #if [ -f ${pattern[0]} ]; then
