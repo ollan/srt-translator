@@ -7,3 +7,8 @@ Translation library: https://github.com/gunesmes/subtitle_translator
 Docker Hub: https://hub.docker.com/r/ollan/srt-translator/
 
 Start: docker run --rm -v /opt/srttranslator:/app -v /media/srt:/srt --name=srt-translator ollan/srt-translator
+
+srt = directory with srt-files
+Searching recursively for srt-files
+
+app = directory where config and source files is put
