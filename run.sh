@@ -4,7 +4,7 @@ mkdir -p /app/config
 mkdir -p /app/src
 
 [[ ! -d "/app/src/.git" ]] && \
-   git clone https://github.com/gunesmes/subtitle_translator.git
+   git clone https://github.com/gunesmes/subtitle_translator.git /app/src
    #git clone https://github.com/ollan/subtitle_translator.git /app/src
    
 cd /app/src
