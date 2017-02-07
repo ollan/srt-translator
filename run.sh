@@ -42,7 +42,7 @@ while inotifywait -r -e modify -e moved_to -e create /srt; do
       #filename=$(filename "$filepath")
       echo "Directory: $dirpath"
       #echo "File name: $filename"
-      mkdir -p "dirpath"
+      mkdir -p "$dirpath"
       
       if [ 0 -lt $(ls "$dirpath"/*_*_to_*.srt 2>/dev/null | wc -w) ]; then
          echo "Already translated dir $dirpath"
