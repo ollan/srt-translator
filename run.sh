@@ -10,6 +10,9 @@ mkdir -p /app/src
 cd /app/src
 git pull /app/src
 
+sed -i "8s/.*/"reload(sys)"/" /app/src/src/subTranslater.py
+sed -i "9s/.*/"sys.setdefaultencoding('utf8')"/" /app/src/src/subTranslater.py
+
 if [ ! -f /app/config/st.cfg ]; then
     echo "40 yandex en sv" > /app/config/st.cfg
     echo "Enter SubTranslater arguments in /app/config/st.cfg"
@@ -34,7 +37,7 @@ fi
 
 YAK=$(cat "/app/config/yandex.key")
 echo "Yandex key: $YAK"
-sed -i "13s/.*/YANDEX_API_KEY = \"$YAK\"/" /app/src/src/subTranslater.py
+sed -i "10s/.*/YANDEX_API_KEY = \"$YAK\"/" /app/src/src/subTranslater.py
 
 while inotifywait -r -e modify -e moved_to -e create /srt; do
    find /srt -name "$fsp" | while read filepath; do
