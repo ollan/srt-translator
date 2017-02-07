@@ -50,7 +50,7 @@ while inotifywait -r -e modify -e moved_to -e create /srt; do
          encoding=`file -i "$filepath" | cut -f 2 -d";" | cut -f 2 -d=`
          echo "Encoding: $encoding"
          iconv -f "$encoding" -t utf-8 "$filepath" > "$dirpath/$filename"
-         python /app/src/run.py "$dirpath" "$args" > /dev/null
+         python /app/src/run.py "$dirpath" $args > /dev/null
          rm "$dirpath/$filename"
          chmod -R 0777 "$dirpath"
       fi
