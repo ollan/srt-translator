@@ -39,9 +39,10 @@ while inotifywait -r -e modify -e moved_to -e create /srt; do
    find /srt -name "$fsp" | while read filepath; do
       
       dirpath="$(dirname "$filepath")/translated"
-      filename=$(filename "$filepath")
+      #filename=$(filename "$filepath")
       echo "Directory: $dirpath"
-      echo "File name: $filename"
+      #echo "File name: $filename"
+      mkdir -p "dirpath"
       
       if [ 0 -lt $(ls "$dirpath"/*_*_to_*.srt 2>/dev/null | wc -w) ]; then
          echo "Already translated dir $dirpath"
@@ -49,9 +50,9 @@ while inotifywait -r -e modify -e moved_to -e create /srt; do
          echo "Translating subtitle file $filepath"
          encoding=`file -i "$filepath" | cut -f 2 -d";" | cut -f 2 -d=`
          echo "Encoding: $encoding"
-         iconv -f "$encoding" -t utf-8 "$filepath" > "$dirpath/$filename"
+         iconv -f "$encoding" -t utf-8 "$filepath" > "$dirpath/utf8.srt"
          python /app/src/run.py "$dirpath" $args > /dev/null
-         rm "$dirpath/$filename"
+         rm "$dirpath/utf8.srt"
          chmod -R 0777 "$dirpath"
       fi
    done
