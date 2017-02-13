@@ -5,7 +5,6 @@ mkdir -p /app/src
 
 [[ ! -d "/app/src/.git" ]] && \
    git clone https://github.com/gunesmes/subtitle_translator.git /app/src
-   #git clone https://github.com/ollan/subtitle_translator.git /app/src
    
 cd /app/src
 git pull /app/src
@@ -15,7 +14,7 @@ sed -i "9s/.*/"sys.setdefaultencoding\(\'utf8\'\)"/" /app/src/src/subTranslater.
 
 if [ ! -f /app/config/st.cfg ]; then
     echo "40 yandex en sv" > /app/config/st.cfg
-    echo "Enter SubTranslater arguments in /app/config/st.cfg"
+    echo "Enter Subtite Translator arguments in /app/config/st.cfg"
 fi
 
 args=$(cat "/app/config/st.cfg")
@@ -23,7 +22,7 @@ echo "Arguments: $args"
 
 if [ ! -f /app/config/fsp.cfg ]; then
     echo "*.en.srt" > /app/config/fsp.cfg
-    echo "Enter SubTranslater file search pattern in /app/config/fsp.cfg"
+    echo "Enter file search pattern in /app/config/fsp.cfg"
 fi
 
 fsp=$(cat "/app/config/fsp.cfg")
@@ -31,7 +30,7 @@ echo "File search pattern: $fsp"
 
 if [ ! -f /app/config/yandex.key ]; then
     echo "4trnsl.X.X.20170201T090054Z.XXXXXXXXXXXXX.XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" > /app/config/yandex.key
-    echo "Enter your Yandex key in /app/config/yandex.key"
+    echo "Enter Yandex key in /app/config/yandex.key"
 fi
 
 YAK=$(cat "/app/config/yandex.key")
