@@ -45,7 +45,7 @@ while inotifywait -r -e modify -e moved_to -e create -e delete /srt; do
       srtfile="$(basename $dirpath).srt"
       dirpath="$dirpath/srttranslator"
       mkdir -p "$dirpath"
-      echo "Output SRT file: $srtfile"
+      echo "Output: $srtfile"
       
       if [ 0 -lt $(ls "$dirpath"/*_*_to_*.srt 2>/dev/null | wc -w) ]; then
          echo "Already translated directory: $dirpath"
