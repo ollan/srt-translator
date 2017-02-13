@@ -43,7 +43,7 @@ while inotifywait -r -e modify -e moved_to -e create -e delete /srt; do
       
       dirpath="$(dirname "$filepath")"
       echo "Directory: $dirpath"
-      srtfile="$(basename $dirpath).sv.srt"
+      srtfile="$(basename $dirpath).srt"
       dirpath="$dirpath/srttranslator"
       mkdir -p "$dirpath"
       echo "Output SRT file: $srtfile"
