@@ -41,9 +41,12 @@ sed -i "10s/.*/YANDEX_API_KEY = \"$YAK\"/" /app/src/src/subTranslater.py
 while inotifywait -r -e modify -e moved_to -e create -e delete /srt; do
    find /srt -name "$fsp" | while read filepath; do
       
-      dirpath="$(dirname "$filepath")/translated"
+      dirpath="$(dirname "$filepath")"
+      srtfile="$(basename $dirpath).sv.srt"
+      dirpath="$dirpath/translated"
       #filename=$(filename "$filepath")
       echo "Directory: $dirpath"
+      echo "SRT file: $srtfile"
       #echo "File name: $filename"
       mkdir -p "$dirpath"
       
@@ -56,6 +59,7 @@ while inotifywait -r -e modify -e moved_to -e create -e delete /srt; do
          iconv -f "$encoding" -t utf-8 "$filepath" > "$dirpath/utf8.srt"
          python /app/src/run.py "$dirpath" $args > /dev/null
          rm "$dirpath/utf8.srt"
+         
          chmod -R 0777 "$dirpath"
       fi
    done
