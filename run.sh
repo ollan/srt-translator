@@ -42,7 +42,7 @@ while inotifywait -r -e modify -e moved_to -e create -e delete /srt; do
       
       dirpath="$(dirname "$filepath")"
       echo "Directory: $dirpath"
-      srtfile="$(basename $dirpath).sv.srt"
+      srtfile="$(basename $dirpath)"
       mkdir -p "$dirpath/srttranslator"
       echo "Output: $srtfile"
       
@@ -56,7 +56,7 @@ while inotifywait -r -e modify -e moved_to -e create -e delete /srt; do
          python /app/src/run.py "$dirpath/srttranslator" $args > /dev/null
          rm "$dirpath/srttranslator/srttranslator.srt"
          chmod -R 0777 "$dirpath/srttranslator"
-         cp "\"$dirpath/srttranslator/*.srt\"" "\"$dirpath/$srtfile\""
+         cp -R "$dirpath/srttranslator" "$dirpath/$srtfile.sv.srt"
       fi
    done
    sleep 60
