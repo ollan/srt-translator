@@ -48,9 +48,9 @@ while inotifywait -r -e modify -e moved_to -e create -e delete /srt; do
       echo "Output: $srtfile"
       
       if [ 0 -lt $(ls "$dirpath"/*_*_to_*.srt 2>/dev/null | wc -w) ]; then
-         echo "Already translated directory: $dirpath"
+         echo "Already translated: $dirpath"
       else
-         echo "Translating subtitle file: $filepath"
+         echo "Translating: $filepath"
          encoding=`file -i "$filepath" | cut -f 2 -d";" | cut -f 2 -d=`
          echo "Encoding: $encoding"
          iconv -f "$encoding" -t utf-8 "$filepath" > "$dirpath/srttranslator.srt"
