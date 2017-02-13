@@ -43,8 +43,7 @@ while inotifywait -r -e modify -e moved_to -e create -e delete /srt; do
       dirpath="$(dirname "$filepath")"
       echo "Directory: $dirpath"
       srtfile="$(basename $dirpath).srttranslator.srt"
-      dirpath="$dirpath/srttranslator"
-      mkdir -p "$dirpath"
+      mkdir -p "$dirpath/srttranslator"
       echo "Output: $srtfile"
       
       if [ 0 -lt $(ls "$dirpath"/*_*_to_*.srt 2>/dev/null | wc -w) ]; then
@@ -53,11 +52,11 @@ while inotifywait -r -e modify -e moved_to -e create -e delete /srt; do
          echo "Translating: $filepath"
          encoding=`file -i "$filepath" | cut -f 2 -d";" | cut -f 2 -d=`
          echo "Encoding: $encoding"
-         iconv -f "$encoding" -t utf-8 "$filepath" > "$dirpath/srttranslator.srt"
-         python /app/src/run.py "$dirpath" $args > /dev/null
-         rm "$dirpath/srttranslator.srt"
+         iconv -f "$encoding" -t utf-8 "$filepath" > "$dirpath/srttranslator/srttranslator.srt"
+         python /app/src/run.py "$dirpath/srttranslator" $args > /dev/null
+         rm "$dirpath/srttranslator/srttranslator.srt"
          chmod -R 0777 "$dirpath"
-         cp "$dirpath/*.srt" "$dirpath/../$srtfile"
+         cp "$dirpath/srttranslator/*.srt" "$dirpath/$srtfile"
       fi
    done
    sleep 60
