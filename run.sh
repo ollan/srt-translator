@@ -28,13 +28,13 @@ fi
 foe=$(cat "/app/config/foe.cfg")
 echo "File output extension: $foe"
 
-if [ ! -f /app/config/fsp.cfg ]; then
-    echo "en.srt" > /app/config/fsp.cfg
-    echo "Enter file input extension in /app/config/fsp.cfg"
+if [ ! -f /app/config/fie.cfg ]; then
+    echo "en.srt" > /app/config/fie.cfg
+    echo "Enter file input extension in /app/config/fie.cfg"
 fi
 
-fsp=$(cat "/app/config/fsp.cfg")
-echo "File input extension: $fsp"
+fie=$(cat "/app/config/fie.cfg")
+echo "File input extension: $fie"
 
 if [ ! -f /app/config/yandex.key ]; then
     echo "4trnsl.X.X.20170201T090054Z.XXXXXXXXXXXXX.XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" > /app/config/yandex.key
@@ -46,16 +46,16 @@ echo "Yandex key: $YAK"
 sed -i "10s/.*/YANDEX_API_KEY = \"$YAK\"/" /app/src/src/subTranslater.py
 
 while inotifywait -r -e modify -e moved_to -e create -e delete /srt; do
-   find /srt -name "*.$fsp" | while read filepath; do
+   find /srt -name "*.$fie" | while read filepath; do
       
       dirpath="$(dirname "$filepath")"
       echo "Directory: $dirpath"
       srtfile="$(basename $filepath)"
-      srtfile="${srtfile%$fsp}.$foe"
+      srtfile="${srtfile%$fie}.$foe"
       mkdir -p "$dirpath/srttranslator"
       echo "Output: $srtfile"
       
-      if [ 0 -lt $(ls "$dirpath"/*_*_to_*.srt 2>/dev/null | wc -w) ]; then
+      if [ 0 -lt $(ls "$dirpath/*.$foe" 2>/dev/null | wc -w) ]; then
          echo "Already translated: $dirpath"
       else
          echo "Translating: $filepath"
