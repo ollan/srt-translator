@@ -26,15 +26,15 @@ if [ ! -f /app/config/foe.cfg ]; then
 fi
 
 foe=$(cat "/app/config/foe.cfg")
-echo "File search pattern: $foe"
+echo "File output extension: $foe"
 
 if [ ! -f /app/config/fsp.cfg ]; then
-    echo "*.en.srt" > /app/config/fsp.cfg
-    echo "Enter file search pattern in /app/config/fsp.cfg"
+    echo "en.srt" > /app/config/fsp.cfg
+    echo "Enter file input extension in /app/config/fsp.cfg"
 fi
 
 fsp=$(cat "/app/config/fsp.cfg")
-echo "File search pattern: $fsp"
+echo "File input extension: $fsp"
 
 if [ ! -f /app/config/yandex.key ]; then
     echo "4trnsl.X.X.20170201T090054Z.XXXXXXXXXXXXX.XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" > /app/config/yandex.key
@@ -46,7 +46,7 @@ echo "Yandex key: $YAK"
 sed -i "10s/.*/YANDEX_API_KEY = \"$YAK\"/" /app/src/src/subTranslater.py
 
 while inotifywait -r -e modify -e moved_to -e create -e delete /srt; do
-   find /srt -name "$fsp" | while read filepath; do
+   find /srt -name "*.$fsp" | while read filepath; do
       
       dirpath="$(dirname "$filepath")"
       echo "Directory: $dirpath"
