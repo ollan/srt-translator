@@ -57,7 +57,7 @@ while inotifywait -r -e modify -e moved_to -e create -e delete /srt; do
          python /app/src/run.py "$dirpath/srttranslator" $args > /dev/null
          rm "$dirpath/srttranslator/srttranslator.srt"
          chmod -R 0777 "$dirpath/srttranslator"
-         cp "$dirpath/srttranslator/*.srt" "$dirpath/$srtfile.sv.srt"
+         mv "$dirpath/srttranslator/*.srt" "$dirpath/$srtfile.sv.srt"
       fi
    done
    sleep 60
