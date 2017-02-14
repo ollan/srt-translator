@@ -18,7 +18,15 @@ if [ ! -f /app/config/st.cfg ]; then
 fi
 
 args=$(cat "/app/config/st.cfg")
-echo "Arguments: $args"
+echo "Subtite Translator arguments: $args"
+
+if [ ! -f /app/config/ste.cfg ]; then
+    echo "_en_to_sv.srt" > /app/config/ste.cfg
+    echo "Enter Subtitle Translator ouput extension in /app/config/ste.cfg"
+fi
+
+ste=$(cat "/app/config/ste.cfg")
+echo "Subtite Translator file output extension: $ste"
 
 if [ ! -f /app/config/foe.cfg ]; then
     echo "sv.srt" > /app/config/foe.cfg
@@ -65,9 +73,8 @@ while inotifywait -r -e modify -e moved_to -e create -e delete /srt; do
          python /app/src/run.py "$dirpath/srttranslator" $args > /dev/null
          rm "$dirpath/srttranslator/srttranslator.srt"
          chmod -R 0777 "$dirpath/srttranslator"
-         #mv "$dirpath/srttranslator/*.srt" "$dirpath/$srtfile.sv.srt"
          cd "$dirpath/srttranslator"
-         cp *.srt "../$srtfile"
+         cp "srttranslator$ste" "../$srtfile"
       fi
    done
    sleep 60
