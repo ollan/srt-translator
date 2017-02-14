@@ -51,7 +51,7 @@ while inotifywait -r -e modify -e moved_to -e create -e delete /srt; do
       dirpath="$(dirname "$filepath")"
       echo "Directory: $dirpath"
       srtfile="$(basename $filepath)"
-      srtfile="${srtfile%$fsp}"
+      srtfile="${srtfile%$fsp}.$foe"
       mkdir -p "$dirpath/srttranslator"
       echo "Output: $srtfile"
       
@@ -67,7 +67,7 @@ while inotifywait -r -e modify -e moved_to -e create -e delete /srt; do
          chmod -R 0777 "$dirpath/srttranslator"
          #mv "$dirpath/srttranslator/*.srt" "$dirpath/$srtfile.sv.srt"
          cd "$dirpath/srttranslator"
-         cp "*.srt" "../$srtfile.$foe"
+         cp "*.srt" "../$srtfile"
       fi
    done
    sleep 60
