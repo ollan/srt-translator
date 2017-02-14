@@ -20,6 +20,14 @@ fi
 args=$(cat "/app/config/st.cfg")
 echo "Arguments: $args"
 
+if [ ! -f /app/config/foe.cfg ]; then
+    echo "sv.srt" > /app/config/foe.cfg
+    echo "Enter file ouput extension in /app/config/foe.cfg"
+fi
+
+foe=$(cat "/app/config/foe.cfg")
+echo "File search pattern: $foe"
+
 if [ ! -f /app/config/fsp.cfg ]; then
     echo "*.en.srt" > /app/config/fsp.cfg
     echo "Enter file search pattern in /app/config/fsp.cfg"
@@ -59,7 +67,7 @@ while inotifywait -r -e modify -e moved_to -e create -e delete /srt; do
          chmod -R 0777 "$dirpath/srttranslator"
          #mv "$dirpath/srttranslator/*.srt" "$dirpath/$srtfile.sv.srt"
          cd "$dirpath/srttranslator"
-         cp "*.srt" "../_$srtfile.sv.srt"
+         cp "*.srt" "../$srtfile.$foe"
       fi
    done
    sleep 60
