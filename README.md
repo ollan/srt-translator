@@ -8,7 +8,6 @@ Docker Hub: https://hub.docker.com/r/ollan/srt-translator/
 
 Start: docker run --rm -v /opt/srttranslator:/app -v /media/srt:/srt --name=srt-translator ollan/srt-translator
 
-srt = directory with srt-files
-Searching recursively for srt-files
+srt = directory with srt-files that is searched recursively for srt-files
 
 app = directory where config and source files is put
