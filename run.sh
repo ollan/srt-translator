@@ -83,8 +83,8 @@ while inotifywait -r -e modify -e moved_to -e create -e delete /srt; do
          fi
          
          cp "srttranslator$ste" "../$srtfile"
-         rm -r "$dirpath/srttranslator/"
          chmod 0777 "../$srtfile"
+         rm -r "$dirpath/srttranslator/"
       fi
    done
    sleep 60
