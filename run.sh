@@ -75,7 +75,9 @@ while inotifywait -r -e modify -e moved_to -e create -e delete /srt; do
          cd "$dirpath/srttranslator"
          
          firstline=$(head -n 1 "srttranslator$ste")
-         if [[ "$firstline" == "1"* ]]; then 
+         if [[ "$firstline" == "1"* ]]; then
+            echo "First line OK in srttranslator$ste"
+         else
             echo "Correcting first line in srttranslator$ste"
             sed -i '1s/^/1\n/' "srttranslator$ste"
          fi
