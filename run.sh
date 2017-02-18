@@ -71,10 +71,18 @@ while inotifywait -r -e modify -e moved_to -e create -e delete /srt; do
          echo "Encoding: $encoding"
          iconv -f "$encoding" -t utf-8 "$filepath" > "$dirpath/srttranslator/srttranslator.srt"
          python /app/src/run.py "$dirpath/srttranslator" $args > /dev/null
-         rm "$dirpath/srttranslator/srttranslator.srt"
-         chmod -R 0777 "$dirpath/srttranslator"
+         
          cd "$dirpath/srttranslator"
+         
+         firstline=$(head -n 1 "srttranslator$ste")
+         if [[ "$firstline" == "1"* ]]; then 
+            echo "Correcting first line in srttranslator$ste"
+            sed -i '1s/^/1\n/' "srttranslator$ste"
+         fi
+         
          cp "srttranslator$ste" "../$srtfile"
+         rm -r "$dirpath/srttranslator/"
+         chmod 0777 "../$srtfile"
       fi
    done
    sleep 60
