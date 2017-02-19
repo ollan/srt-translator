@@ -4,10 +4,18 @@ Docker Container that translates SRT subtitle files.
 
 Translation library: https://github.com/gunesmes/subtitle_translator
 
-Docker Hub: https://hub.docker.com/r/ollan/srt-translator/
+Docker Contaniner: https://hub.docker.com/r/ollan/srt-translator/
 
-Start: docker run --rm -v /opt/srttranslator:/app -v /media/srt:/srt --name=srt-translator ollan/srt-translator
+##Usage
 
-srt = directory with srt-files that is searched recursively for srt-files
+```
+docker run --rm -v /opt/srttranslator:/app -v /media/srt:/srt --name=srt-translator ollan/srt-translator`
+```
 
-app = directory where config and source files is put
+##Directories & Files
+
+srt: Directory where SRT-files is searched for recursively
+
+app: Directory where config and source files is stored
+
+
