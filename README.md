@@ -5,7 +5,7 @@ Docker container that translates SRT subtitle files.
 ##Information
 Translation library: https://github.com/gunesmes/subtitle_translator
 
-Docker Contaniner: https://hub.docker.com/r/ollan/srt-translator/
+Docker container: https://hub.docker.com/r/ollan/srt-translator/
 
 ##Usage
 
