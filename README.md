@@ -1,5 +1,5 @@
 # docker-srt-translator
-Docker Container that translates SRT subtitle files.
+Docker container that translates SRT subtitle files.
 
 
 ##Information
