@@ -21,7 +21,9 @@ docker run --rm -v /opt/srttranslator:/app -v /media/srt:/srt --name=srt-transla
 /app: Directory where config and source files is stored
 
 
-/app/config/st.cfg: Subtitle Translator arguments
+/app/config/st.cfg
+
+Subtitle Translator library arguments.
 
 Example file:
 ```
@@ -29,7 +31,9 @@ Example file:
 ```
 
 
-/app/config/ste.cfg: Subtitle Translator library output file suffix
+/app/config/ste.cfg
+
+Subtitle Translator library output file suffix.
 
 Example file:
 ```
@@ -37,7 +41,9 @@ _en_to_sv.srt
 ```
 
 
-/app/config/foe.cfg: SRT Translator output file extension
+/app/config/foe.cfg
+
+SRT Translator (this Docker container) output file extension.
 
 Example file:
 ```
@@ -45,7 +51,9 @@ sv.srt
 ```
 
 
-/app/config/fie.cfg: SRT Translator input file extension. File extension to search for in /srt.
+/app/config/fie.cfg
+
+SRT Translator (this Docker container) input file extension. File extension to search for in /srt directory.
 
 Example file:
 ```
@@ -53,7 +61,9 @@ en.srt
 ```
 
 
-/app/config/yandex.key: SRT Translator input file extension. Files to search for in /srt.
+/app/config/yandex.key
+
+Subtitle Translator library Yandex key.
 
 Example file:
 ```
