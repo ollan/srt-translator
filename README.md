@@ -10,7 +10,7 @@ Docker Contaniner: https://hub.docker.com/r/ollan/srt-translator/
 ##Usage
 
 ```
-docker run --rm -v /opt/srttranslator:/app -v /media/srt:/srt --name=srt-translator ollan/srt-translator`
+docker run --rm -v /opt/srttranslator:/app -v /media/srt:/srt --name=srt-translator ollan/srt-translator
 ```
 
 ##Directories & Files
