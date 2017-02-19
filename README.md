@@ -45,7 +45,7 @@ sv.srt
 ```
 
 
-/app/config/fie.cfg: SRT Translator input file extension. Files to search for in /srt.
+/app/config/fie.cfg: SRT Translator input file extension. File extension to search for in /srt.
 
 Example file:
 ```
