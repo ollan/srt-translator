@@ -7,6 +7,8 @@ Translation library: https://github.com/gunesmes/subtitle_translator
 
 Docker container: https://hub.docker.com/r/ollan/srt-translator/
 
+Yandex: https://tech.yandex.com/translate/
+
 ##Usage
 
 ```
