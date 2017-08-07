@@ -70,7 +70,8 @@ while inotifywait -r -e modify -e moved_to -e create -e delete /srt; do
          encoding=`file -i "$filepath" | cut -f 2 -d";" | cut -f 2 -d=`
          echo "Encoding: $encoding"
          iconv -f "$encoding" -t utf-8 "$filepath" > "$dirpath/srttranslator/srttranslator.srt"
-         python /app/src/run.py "$dirpath/srttranslator" $args > /dev/null
+         cd /app/src/
+         python run.py "$dirpath/srttranslator" $args > /dev/null
          
          cd "$dirpath/srttranslator"
          
