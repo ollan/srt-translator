@@ -11,7 +11,6 @@ git pull /app/src
 
 sed -i "8s/.*/"reload\(sys\)"/" /app/src/src/subTranslater.py
 sed -i "9s/.*/"sys.setdefaultencoding\(\'utf8\'\)"/" /app/src/src/subTranslater.py
-sed -i "104s/json/plain/" /app/src/src/subTranslater.py
 
 if [ ! -f /app/config/st.cfg ]; then
     echo "40 yandex en sv" > /app/config/st.cfg
